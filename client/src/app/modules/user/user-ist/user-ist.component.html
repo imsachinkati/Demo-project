@@ -1,0 +1,64 @@
+<div class="user-table-container">
+
+    <input type="text" #searchInput [(ngModel)]="user.name" placeholder="Search by name">
+
+    <!-- Add User Button -->
+    <button (click)="addUser()">Add User</button>
+
+    <!-- User List Table -->
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Actions</th> <!-- New column for edit and delete icons -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of usersList.reverse()">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.age }}</td>
+                <td>
+                    <button (click)="editUser(user)" class="action-btn">
+                        <i class="fas fa-edit"></i> <!-- Edit icon -->
+                    </button>
+                    <button (click)="deleteUser(user)" class="action-btn">
+                        <i class="fas fa-trash-alt"></i> <!-- Delete icon -->
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- custom-modal.component.html -->
+<div class="popup-container" *ngIf="showPopup">
+    <div class="popup-content">
+        <h2>Add New User</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="user.name" required>
+        <div *ngIf="submitted && !user.name.trim()" class="error-message">
+            Name is required.
+        </div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="user.email" required>
+        <div *ngIf="submitted && !user.email.trim()" class="error-message">
+            Email is required.
+        </div>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" [(ngModel)]="user.age" required>
+        <div *ngIf="submitted && user.age === ''" class="error-message">
+            Age is required.
+        </div>
+
+        <div class="buttons-container">
+            <button *ngIf="!isEdit" type="button" (click)="addNewUser()" class="add-user-button">Add User</button>
+            <button *ngIf="isEdit" type="button" (click)="addNewUser()" class="add-user-button">Update User</button>
+            <button type="button" (click)="onCancel()" class="cancel-button">Cancel</button>
+        </div>
+    </div>
+</div>
