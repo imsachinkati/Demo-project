@@ -18,7 +18,7 @@ Before proceeding, ensure you have the following installed:
 You can clone the project by running the following command in your terminal or command prompt:
 
 ```bash
-git clone https://github.com/your-username/demo-project.git
+https://github.com/imsachinkati/Demo-project.git
 1.Go to the server directory:
 cd demo-project/server
 2.Install the required dependencies:
