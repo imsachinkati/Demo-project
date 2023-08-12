@@ -1,6 +1,14 @@
-<div class="user-table-container">
 
-    <input type="text" #searchInput [(ngModel)]="user.name" placeholder="Search by name">
+<div class="user-table-container">
+    <h2>Pure Pipe</h2>
+    <p>Input date: {{ yourTimeDate | date:'medium' }}</p>
+    <p>Formatted: {{ yourTimeDate | pureTimeAgo }}</p>
+    
+    <h2>Impure Pipe</h2>
+    <p>Input date: {{ yourTimeDate | date:'medium' }}</p>
+    <p>Formatted: {{ yourTimeDate | impureTimeAgo }}</p>
+    
+    <input type="text" #searchInput  placeholder="Search by name">
 
     <!-- Add User Button -->
     <button (click)="addUser()">Add User</button>
@@ -32,6 +40,9 @@
         </tbody>
     </table>
 </div>
+
+
+
 
 <!-- custom-modal.component.html -->
 <div class="popup-container" *ngIf="showPopup">

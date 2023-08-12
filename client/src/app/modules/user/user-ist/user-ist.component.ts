@@ -15,7 +15,7 @@ export class UserIstComponent implements OnInit {
   submitted = false;
   isEdit: boolean = false;
   user: User = { _id: '', name: '', email: '', age: '' };
-
+  yourTimeDate = new Date('08/12/2023 15:37:34');
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
@@ -27,7 +27,6 @@ export class UserIstComponent implements OnInit {
       distinctUntilChanged()
     );
     nameSearch$.subscribe((name: string) => {
-      console.log(name);
       this.fetchUsers(name);
     });
   }
@@ -63,7 +62,6 @@ export class UserIstComponent implements OnInit {
         this.userService.createUser(this.user).subscribe(
           (response: any) => {
             // Handle the response data here
-            console.log('User added successfully:', response);
             this.resetUser();
             this.showPopup = false;
             this.submitted = true;
@@ -92,7 +90,6 @@ export class UserIstComponent implements OnInit {
   updateUser() {
     this.userService.updateUser(this.user).subscribe(
       (response: any) => {
-        console.log('User updated successfully:', response);
         this.resetUser();
         this.showPopup = false;
         this.isEdit = false;
@@ -109,7 +106,6 @@ export class UserIstComponent implements OnInit {
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(
       (response: any) => {
-        console.log('User deleted successfully:', response);
         this.fetchUsers('');
       },
       (error) => {
@@ -126,7 +122,6 @@ export class UserIstComponent implements OnInit {
         if (userData) {
           if (Array.isArray(userData)) {
             this.usersList = userData; // Assuming the API returns an array of users
-            console.log('User Data:', userData);
           } else {
             console.log('Invalid user data format.');
           }
