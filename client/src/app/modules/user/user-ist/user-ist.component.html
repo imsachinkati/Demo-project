@@ -1,20 +1,22 @@
 
 <div class="user-table-container">
-    <h2>Pure Pipe</h2>
+    <!-- <h2>Pure Pipe</h2>
     <p>Input date: {{ yourTimeDate | date:'medium' }}</p>
     <p>Formatted: {{ yourTimeDate | pureTimeAgo }}</p>
     
     <h2>Impure Pipe</h2>
     <p>Input date: {{ yourTimeDate | date:'medium' }}</p>
-    <p>Formatted: {{ yourTimeDate | impureTimeAgo }}</p>
+    <p>Formatted: {{ yourTimeDate | impureTimeAgo }}</p> -->
     
     <input type="text" #searchInput  placeholder="Search by name">
 
     <!-- Add User Button -->
-    <button (click)="addUser()">Add User</button>
+    <p>user list component</p>
+    <button class="button" (click)="addUser()">Add User</button>
+    <app-user-profile></app-user-profile>
 
     <!-- User List Table -->
-    <table class="user-table">
+    <table class="user-table" *ngIf="show">
         <thead>
             <tr>
                 <th>Name</th>

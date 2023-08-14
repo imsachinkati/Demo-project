@@ -8,6 +8,7 @@ import { ApiInterceptor } from '@core/interceptors/api.interceptor';
 import { FormsModule } from '@angular/forms';
 import { PureTimeAgoPipe } from './shared/pipes/pure-time-ago';
 import { ImpureTimeAgoPipe } from './shared/pipes/impure-time-ago';
+import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { ImpureTimeAgoPipe } from './shared/pipes/impure-time-ago';
     AppComponent, 
     UserIstComponent,
     PureTimeAgoPipe, // Declare your pure pipe
-    ImpureTimeAgoPipe // Declare your impure pipe
+    ImpureTimeAgoPipe, UserProfileComponent // Declare your impure pipe
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [

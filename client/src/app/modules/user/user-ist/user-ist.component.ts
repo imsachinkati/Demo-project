@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core';
 import { User } from '@app/core/models/user.model';
 import { UserService } from '@app/core/services/user.service';
 import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
@@ -7,6 +7,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
   selector: 'app-user-ist',
   templateUrl: './user-ist.component.html',
   styleUrls: ['./user-ist.component.scss'],
+  encapsulation : ViewEncapsulation.Emulated,
 })
 export class UserIstComponent implements OnInit {
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef | any;
@@ -14,6 +15,7 @@ export class UserIstComponent implements OnInit {
   showPopup: boolean = false;
   submitted = false;
   isEdit: boolean = false;
+  show: boolean = false;
   user: User = { _id: '', name: '', email: '', age: '' };
   yourTimeDate = new Date('08/12/2023 15:37:34');
   constructor(private userService: UserService) {}
@@ -136,3 +138,4 @@ export class UserIstComponent implements OnInit {
     );
   }
 }
+
